@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ApplicationRestaurant.Repository;
+using ApplicationRestaurant.Models;
 
 namespace ApplicationRestaurant
 {
@@ -20,14 +22,19 @@ namespace ApplicationRestaurant
     /// </summary>
     public partial class MainWindow : Window
     {
+        private UserRepository userRepository;
         public MainWindow()
         {
+            this.userRepository = new UserRepository();
             InitializeComponent();
         }
 
         private void LoginAction(object sender, RoutedEventArgs e)
         {
-            
+            TextBox login = (TextBox)this.FindName("login");
+            TextBox password = (TextBox)this.FindName("Password");
+            List<Users> users = userRepository.getAll();
+
             Application.Current.MainWindow = new HomePage();
             Application.Current.MainWindow.Show();
             this.Close();

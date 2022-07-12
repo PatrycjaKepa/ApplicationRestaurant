@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ApplicationRestaurant"
         mc:Ignorable="d"
-        Title="HomePage" Height="450" Width="800">
-    <Grid>
+        Title="HomePage" Height="550" Width="800">
+
+    <Grid Background="#bfd7ea">
+
         <Grid.ColumnDefinitions>
 
-            <ColumnDefinition Width="302*" />
-            <ColumnDefinition Width="166*"/>
-            <ColumnDefinition Width="166*" />
-            <ColumnDefinition Width="166*" />
+            <ColumnDefinition Width="300*" />
+            <ColumnDefinition Width="500*"/>
 
         </Grid.ColumnDefinitions>
 
@@ -26,16 +26,83 @@
 
         </Grid.RowDefinitions>
 
-        <Button Click="click_sniadanie" Grid.Column="0" Grid.Row="0" Content="Śniadanie" />
-        <Button Click="LunchAction" Grid.Column="0" Grid.Row="1" Content="Lunch" />
-        <Button Click="DrinkAction"  Grid.Column="0" Grid.Row="2" Content="Napoje" />
-        <Button Grid.Column="0" Grid.Row="3" Content="Rabaty" />
-        <Button Grid.Column="0" Grid.Row="4" Content="Podsumowanie" />
-        <StackPanel x:Name="LunchPanel" Visibility="Hidden" Grid.Column="3" Grid.Row="3" >
-            <Button Content="Rzerzucha" />
-        </StackPanel>
-        <StackPanel x:Name="DrinkPanel" Visibility="Hidden" Grid.Column="3" Grid.Row="3" >
-            <Button Content="Smoothie" />
-        </StackPanel>
+        <Button Background="#eee0cb" Click="click_sniadanie" Grid.Column="0" Grid.Row="0" Content="Śniadanie">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="12"/>
+                    <Setter Property="Margin" Value="10,10,10,10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button Background="#eee0cb" Click="LunchAction" Grid.Column="0" Grid.Row="1" Content="Lunch">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="12"/>
+                    <Setter Property="Margin" Value="10,10,10,10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button Background="#eee0cb" Click="DrinkAction"  Grid.Column="0" Grid.Row="2" Content="Napoje">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="12"/>
+                    <Setter Property="Margin" Value="10,10,10,10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button Background="#eee0cb" Grid.Column="0" Grid.Row="3" Content="Rabaty">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="12"/>
+                    <Setter Property="Margin" Value="10,10,10,10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button Background="#eee0cb" Grid.Column="0" Grid.Row="4" Content="Podsumowanie">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="12"/>
+                    <Setter Property="Margin" Value="10,10,10,10"/>
+                </Style>
+            </Button.Resources>
+        </Button> 
+
+
+        <Border Background="#839788" Grid.Column="1" Grid.Row="0" Grid.RowSpan="5">
+        <Grid>
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="166*"/>
+                <ColumnDefinition Width="166*"/>
+                <ColumnDefinition Width="166*"/>
+            </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="150*"/>
+                    <RowDefinition Height="150*"/>
+                    <RowDefinition Height="150*"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel x:Name="LunchPanel" Visibility="Hidden" Grid.Column="0" Grid.Row="0" >
+                    <Button Content="Rzerzucha">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="12"/>
+                                <Setter Property="Margin" Value="10,10,10,10"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+            
+                <StackPanel x:Name="DrinkPanel" Visibility="Hidden" Grid.Column="3" Grid.Row="3" >
+                <Button Content="Smoothie" />
+                </StackPanel> 
+            
+        </Grid>
+        </Border>
     </Grid>
 </Window>

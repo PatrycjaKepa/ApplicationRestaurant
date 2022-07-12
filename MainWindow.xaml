@@ -5,30 +5,63 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ApplicationRestaurant"
         mc:Ignorable="d"
-        Title="Okno logowania" Height="450" Width="800">
-    <Grid>
+        Title="Okno logowania" Height="330" Width="800">
+    
+    <Grid Background="#bfd7ea">
+        
         <Grid.ColumnDefinitions>
 
-            <ColumnDefinition Width="302*" />
-            <ColumnDefinition Width="166*"/>
-            <ColumnDefinition Width="166*" />
-            <ColumnDefinition Width="166*" />
-
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="700*"/>
+            <ColumnDefinition Width="50*" />
+            
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
 
-            <RowDefinition Height="110*" />
-            <RowDefinition Height="110*" />
-            <RowDefinition Height="110*" />
-            <RowDefinition Height="110*" />
-            <RowDefinition Height="110*" />
-
+            <RowDefinition Height="50*" />
+            <RowDefinition Height="180*" />
+            <RowDefinition Height="50*" />
+            
         </Grid.RowDefinitions>
+        
+        <Border CornerRadius="12,12,12,12" Background="#839788" Grid.Column="1" Grid.Row="1">
+        <Grid>
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="245*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="245*"/>
+                <ColumnDefinition Width="50*"/>
+            </Grid.ColumnDefinitions>
 
-        <Button Click="LoginAction" Grid.Column="0" Grid.Row="0" Content="Zaloguj" />
-        <Button Grid.Column="0" Grid.Row="1" Content="Zarejestruj" />
-        <TextBox Grid.Column="1" Grid.Row="0" x:Name="login"> </TextBox>
-        <TextBox Grid.Column="1" Grid.Row="1" x:Name="password"> </TextBox>
+            <Grid.RowDefinitions>
+
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="8*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="40*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="40*"/>
+                <RowDefinition Height="10*"/>
+                
+            </Grid.RowDefinitions>
+
+                <Label Background="#43372b" Grid.Column="0" Grid.Row="0"></Label>
+                <Label Foreground="#FFFFFF" Background="#43372b" Grid.Column="1" Grid.Row="0">Login:</Label>
+                <Label Background="#43372b" Grid.Column="2" Grid.Row="0"></Label>
+                <TextBox Grid.Column="1" Grid.Row="2" x:Name="login"> </TextBox>
+                <Label Foreground="#FFFFFF" Background="#43372b" Grid.Column="3" Grid.Row="0">Hasło:</Label>
+                <Label Background="#43372b" Grid.Column="4" Grid.Row="0"></Label>
+                <TextBox Grid.Column="3" Grid.Row="2" x:Name="password"> </TextBox>
+                <Button Background="#eee0cb" Click="LoginAction" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="4" Content="Zaloguj" />
+                <Button Background="#baa898" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="6" Content="Zarejestruj" />
+            
+        </Grid>
+        </Border>
+        
+        
     </Grid>
 </Window>

@@ -50,5 +50,6 @@ namespace ApplicationRestaurant
             element.Visibility = Visibility.Visible;
             
         }
+        
     }
 }

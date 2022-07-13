@@ -32,8 +32,18 @@ namespace ApplicationRestaurant
         private void LoginAction(object sender, RoutedEventArgs e)
         {
             TextBox login = (TextBox)this.FindName("login");
-            TextBox password = (TextBox)this.FindName("Password");
-            List<Users> users = userRepository.getAll();
+            TextBox password = (TextBox)this.FindName("password");
+            var user = userRepository.getByName(login.Text);
+            if (user == null)
+            {
+                MessageBox.Show("Nie znaleziono użytkownika");
+                return;
+            }
+            if (user.Password.Trim() != password.Text.Trim())
+            {
+                MessageBox.Show("Hasło jest nie poprawne");
+                return;
+            }
 
             Application.Current.MainWindow = new HomePage();
             Application.Current.MainWindow.Show();

@@ -144,6 +144,12 @@ namespace ApplicationRestaurant.Data
                     .HasMaxLength(30)
                     .HasColumnName("USER_NAME")
                     .IsFixedLength();
+
+                entity.Property(e => e.Password)
+                    .IsRequired()
+                    .HasMaxLength(100)
+                    .HasColumnName("PASSWORD")
+                    .IsFixedLength();
             });
 
             OnModelCreatingPartial(modelBuilder);

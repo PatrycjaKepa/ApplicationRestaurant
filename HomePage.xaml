@@ -23,10 +23,12 @@
             <RowDefinition Height="110*" />
             <RowDefinition Height="110*" />
             <RowDefinition Height="110*" />
+            <RowDefinition Height="110*" />
 
         </Grid.RowDefinitions>
 
-        <Button Background="#eee0cb" Click="click_sniadanie" Grid.Column="0" Grid.Row="0" Content="Śniadanie">
+        
+        <Button Background="#eee0cb" Click="BreakfastAction" Grid.Column="0" Grid.Row="0" Content="Śniadanie">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="12"/>
@@ -34,7 +36,7 @@
                 </Style>
             </Button.Resources>
         </Button>
-
+        
         <Button Background="#eee0cb" Click="LunchAction" Grid.Column="0" Grid.Row="1" Content="Lunch">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
@@ -69,19 +71,27 @@
                     <Setter Property="Margin" Value="10,10,10,10"/>
                 </Style>
             </Button.Resources>
-        </Button> 
+        </Button>
+
+        <Button Grid.Row="5"  Grid.Column="0" Background="#eee0cb" Click="LogoutAction" Content="Wyloguj">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="12"/>
+                    <Setter Property="Margin" Value="10,10,10,10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
 
 
-        <Border Background="#839788" Grid.Column="1" Grid.Row="0" Grid.RowSpan="5">
+        <Border Background="#839788" Grid.Column="1" Grid.Row="0" Grid.RowSpan="6">
         <Grid>
             
             <Grid.ColumnDefinitions>
 
                     <ColumnDefinition Width="450*"/>
                     <ColumnDefinition Width="50*"/>
-                    <ColumnDefinition Width="50*"/>
-                
-            </Grid.ColumnDefinitions>
+
+                </Grid.ColumnDefinitions>
 
                 <Grid.RowDefinitions>
 
@@ -99,7 +109,7 @@
 
                 </Grid.RowDefinitions>
 
-                <StackPanel x:Name="LunchPanel" Visibility="Hidden" Grid.Column="0" Grid.Row="0" >
+                <Grid x:Name="LunchPanel" Visibility="Hidden" Grid.Column="0" Grid.Row="0" >
                     <Button Content="Rzerzucha">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
@@ -108,11 +118,15 @@
                             </Style>
                         </Button.Resources>
                     </Button>
-                </StackPanel>
-            
-                <StackPanel x:Name="DrinkPanel" Visibility="Hidden" Grid.Column="3" Grid.Row="3" >
-                <Button Content="Smoothie" />
-                </StackPanel>
+                </Grid>
+
+                <Grid x:Name="BreakfastPanel" Visibility="Hidden" Grid.Column="3" Grid.Row="3" >
+                    <Button Content="Smoothie" />
+                </Grid>
+
+                <Grid x:Name="DrinkPanel" Visibility="Hidden" Grid.Column="3" Grid.Row="3" >
+                    <Button Content="Smoothie" />
+                </Grid>
 
                 
                 <Border Grid.Column="0" Grid.Row="0" Background="#FFFFFF" BorderThickness="5,5" CornerRadius="10">
@@ -129,15 +143,6 @@
                     </Button.Resources>
                 </Button>
 
-                <Button Grid.Column="2" Grid.Row="0">
-                    <Button.Resources>
-                        <Style TargetType="{x:Type Border}">
-                            <Setter Property="CornerRadius" Value="10"/>
-                            <Setter Property="Margin" Value="2,4"/>
-                            <Setter Property="BorderThickness" Value="2,5"/>
-                        </Style>
-                    </Button.Resources>
-                </Button>
 
             </Grid>
         </Border>

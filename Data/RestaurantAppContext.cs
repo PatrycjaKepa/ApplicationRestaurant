@@ -96,12 +96,6 @@ namespace ApplicationRestaurant.Data
                 entity.Property(e => e.Id)
                     .ValueGeneratedNever()
                     .HasColumnName("ID");
-
-                entity.Property(e => e.Name)
-                    .IsRequired()
-                    .HasMaxLength(20)
-                    .HasColumnName("NAME")
-                    .IsFixedLength();
             });
 
             modelBuilder.Entity<Products>(entity =>
@@ -131,7 +125,8 @@ namespace ApplicationRestaurant.Data
             {
                 entity.Property(e => e.Id)
                     .ValueGeneratedNever()
-                    .HasColumnName("ID");
+                    .HasColumnName("ID")
+                    .HasDefaultValueSql("NEXT VALUE FOR Users");
 
                 entity.Property(e => e.Role)
                     .IsRequired()

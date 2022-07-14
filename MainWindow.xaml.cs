@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ApplicationRestaurant.Repository;
 using ApplicationRestaurant.Models;
+using ApplicationRestaurant.ValueObject;
 
 namespace ApplicationRestaurant
 {
@@ -45,7 +46,14 @@ namespace ApplicationRestaurant
                 return;
             }
 
-            Application.Current.MainWindow = new HomePage();
+            Application.Current.MainWindow = new Start(new UserVO(user.Id, user.UserName, user.Role, user.Password));
+            Application.Current.MainWindow.Show();
+            this.Close();
+        }
+
+        private void GoToRegisterAction(object sender, RoutedEventArgs e)
+        {
+            Application.Current.MainWindow = new Register();
             Application.Current.MainWindow.Show();
             this.Close();
         }

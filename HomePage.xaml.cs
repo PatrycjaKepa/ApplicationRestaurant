@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ApplicationRestaurant.ValueObject;
+using ApplicationRestaurant.Repository;
 
 namespace ApplicationRestaurant
 {
@@ -19,31 +21,45 @@ namespace ApplicationRestaurant
     /// </summary>
     public partial class HomePage : Window
     {
-        private bool _showLunch;
-        public HomePage()
+        private ProductsRepository productsRepository;
+        private OrderVO orderVO;
+        private UserVO userVO;
+        public HomePage(OrderVO orderVO, UserVO userVO)
         {
+            this.orderVO = orderVO;
+            this.userVO = userVO;
+            this.productsRepository = new ProductsRepository();
             InitializeComponent();
         }
 
-        private void click_sniadanie(object sender, RoutedEventArgs e)
+        private void LogoutAction(object sender, RoutedEventArgs e)
         {
             Application.Current.MainWindow = new MainWindow();
             Application.Current.MainWindow.Show();
             this.Close();
         }
 
+        private void BreakfastAction(object sender, RoutedEventArgs e)
+        {
+            this.toggleGrid(BreakfastPanel);
+            var elements = productsRepository.getProductWithCategoriesByCategoryName("Śniadanie");
+        }
+
         private void LunchAction(object sender, RoutedEventArgs e)
         {
-            this.toggleStackPanel(LunchPanel);
+            this.toggleGrid(LunchPanel);
+            var elements = productsRepository.getProductWithCategoriesByCategoryName("Lunch");
         }
 
         private void DrinkAction(object sender, RoutedEventArgs e)
         {
-            this.toggleStackPanel(DrinkPanel);
+            this.toggleGrid(DrinkPanel);
+            var elements = productsRepository.getProductWithCategoriesByCategoryName("Napoje");
         }
 
-        private void toggleStackPanel(StackPanel element)
+        private void toggleGrid(Grid element)
         {
+            BreakfastPanel.Visibility = Visibility.Hidden;
             LunchPanel.Visibility = Visibility.Hidden;
             DrinkPanel.Visibility = Visibility.Hidden;
 
@@ -51,5 +67,9 @@ namespace ApplicationRestaurant
             
         }
         
+        private void showProductsInGrid()
+        {
+            //todo
+        }
     }
 }

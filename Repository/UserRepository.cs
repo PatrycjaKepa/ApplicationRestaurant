@@ -40,7 +40,15 @@ namespace ApplicationRestaurant.Repository
 				user.UserName = name;
 				user.Password = password;
 				user.Role = "Waiter";
-				user.Id = this.context.Users.OrderByDescending(u => u.Id).First().Id+1;
+				var id = this.context.Orders.OrderByDescending(o => o.Id).FirstOrDefault();
+				if (id != null)
+				{
+					user.Id = id.Id + 1;
+				}
+				else
+				{
+					user.Id = 1;
+				}
 				this.context.Users.Add(user);
 				this.context.SaveChanges();
 				return true;

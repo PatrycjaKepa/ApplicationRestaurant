@@ -40,10 +40,11 @@ namespace ApplicationRestaurant
             int row = 0;
             grid.RowDefinitions.Clear();
 
-            RowDefinition rowDefinition = new RowDefinition();
-            rowDefinition.Height = new GridLength(100);
+            
             foreach (Orders order in orders)
             {
+                RowDefinition rowDefinition = new RowDefinition();
+                rowDefinition.Height = new GridLength(100);
                 grid.RowDefinitions.Add(rowDefinition);
                 Button button = new Button();
 

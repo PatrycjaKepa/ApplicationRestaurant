@@ -27,7 +27,13 @@ namespace ApplicationRestaurant.Repository
 			try
 			{
 				Orders order = new Orders();
-				order.Id = this.context.Orders.OrderByDescending(o => o.Id).First().Id + 1;
+				var id = this.context.Orders.OrderByDescending(o => o.Id).FirstOrDefault();
+				if (id != null)
+                {
+					order.Id = id.Id + 1;
+                } else {
+					order.Id = 1;
+				}
 				this.context.Orders.Add(order);
 				this.context.SaveChanges();
 				return true;

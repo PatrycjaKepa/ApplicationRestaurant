@@ -6,17 +6,18 @@
         xmlns:local="clr-namespace:ApplicationRestaurant"
         mc:Ignorable="d"
         Title="Start" Height="450" Width="800">
-    
+
     <Grid Background="#bfd7ea">
-        
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10*"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="9*"/>
         </Grid.RowDefinitions>
-        <ScrollViewer HorizontalScrollBarVisibility="Auto">
+        <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Auto" Margin="0,0,400,0">
             <Grid x:Name="ordersContainer" VerticalAlignment="Stretch">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="50"/>
@@ -27,6 +28,18 @@
                 </Grid.RowDefinitions>
             </Grid>
         </ScrollViewer>
+        <Grid Grid.Row="0" Margin="405,10,10,-10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="261*"/>
+                <RowDefinition Height="38*"/>
+                <RowDefinition Height="79*"/>
+                <RowDefinition Height="56*"/>
+            </Grid.RowDefinitions>
+            <Button Background="#baa898" Foreground="#43372b" Click="AddOrderAction" Content="Dodaj" />
+
+        </Grid>
     </Grid>
-    
+
+
+
 </Window>

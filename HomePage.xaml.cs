@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ApplicationRestaurant.ValueObject;
 using ApplicationRestaurant.Repository;
+using System.Windows.Media;
 
 namespace ApplicationRestaurant
 {
@@ -41,35 +42,54 @@ namespace ApplicationRestaurant
 
         private void BreakfastAction(object sender, RoutedEventArgs e) // metoda pokazująca opcje z zakładki śniadania
         {
-            this.toggleGrid(BreakfastPanel);
             var elements = productsRepository.getProductWithCategoriesByCategoryName("Śniadanie");
+            this.showProductsInGrid(elements, FoodPanel);
         }
 
         private void LunchAction(object sender, RoutedEventArgs e) // metoda pokazująca opcje z zakładki lunch
         {
-            this.toggleGrid(LunchPanel);
             var elements = productsRepository.getProductWithCategoriesByCategoryName("Lunch");
+            this.showProductsInGrid(elements, FoodPanel);
         }
 
         private void DrinkAction(object sender, RoutedEventArgs e) // metoda pokazująca opcje z zakładki napoje
         {
-            this.toggleGrid(DrinkPanel);
             var elements = productsRepository.getProductWithCategoriesByCategoryName("Napoje");
+            this.showProductsInGrid(elements, FoodPanel);
         }
 
-        private void toggleGrid(Grid element) // metoda odpowiadająca za przechodzeniem między zakładkami aplikacji
-        {
-            BreakfastPanel.Visibility = Visibility.Hidden;
-            LunchPanel.Visibility = Visibility.Hidden;
-            DrinkPanel.Visibility = Visibility.Hidden;
-
-            element.Visibility = Visibility.Visible;
-            
-        }
+   
         
-        private void showProductsInGrid()
+        private void showProductsInGrid(List<ProductsWithCategoriesVO> products, Grid grid)
         {
-            //todo
+            int row = 0;
+            grid.Children.Clear();
+            grid.RowDefinitions.Clear();
+            foreach (ProductsWithCategoriesVO product in products)
+            {
+                RowDefinition rowDefinition = new RowDefinition();
+                rowDefinition.Height = new GridLength(50);
+                grid.RowDefinitions.Add(rowDefinition);
+
+                Button button = new Button();
+
+                button.Content = product.Name;
+                button.SetValue(Grid.RowProperty, row);
+                button.SetValue(Grid.ColumnProperty, 0);
+                button.Background = Brushes.White;
+
+                Button AddButton = new Button();
+                AddButton.SetValue(Grid.RowProperty, row);
+                AddButton.SetValue(Grid.ColumnProperty, 1);
+                AddButton.Background = Brushes.White;
+                AddButton.Content = "Dodaj";
+
+                grid.Children.Add(button);
+                grid.Children.Add(AddButton);
+
+
+                row++;
+            }
         }
     }
 }

@@ -11,140 +11,106 @@
 
         <Grid.ColumnDefinitions>
 
-            <ColumnDefinition Width="300*" />
-            <ColumnDefinition Width="500*"/>
+            <ColumnDefinition Width="300" />
+            <ColumnDefinition Width="490"/>
 
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-
-            <RowDefinition Height="110*" />
-            <RowDefinition Height="110*" />
-            <RowDefinition Height="110*" />
-            <RowDefinition Height="110*" />
-            <RowDefinition Height="110*" />
-            <RowDefinition Height="110*" />
-
+            <RowDefinition/>
         </Grid.RowDefinitions>
 
-        
-        <Button Background="#eee0cb" Click="BreakfastAction" Grid.Column="0" Grid.Row="0" Content="Śniadanie">
-            <Button.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="12"/>
-                    <Setter Property="Margin" Value="10,10,10,10"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-        
-        <Button Background="#eee0cb" Click="LunchAction" Grid.Column="0" Grid.Row="1" Content="Lunch">
-            <Button.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="12"/>
-                    <Setter Property="Margin" Value="10,10,10,10"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-
-        <Button Background="#eee0cb" Click="DrinkAction"  Grid.Column="0" Grid.Row="2" Content="Napoje">
-            <Button.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="12"/>
-                    <Setter Property="Margin" Value="10,10,10,10"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-
-        <Button Background="#eee0cb" Grid.Column="0" Grid.Row="3" Content="Rabaty">
-            <Button.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="12"/>
-                    <Setter Property="Margin" Value="10,10,10,10"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-
-        <Button Background="#eee0cb" Grid.Column="0" Grid.Row="4" Content="Podsumowanie">
-            <Button.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="12"/>
-                    <Setter Property="Margin" Value="10,10,10,10"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-
-        <Button Grid.Row="5"  Grid.Column="0" Background="#eee0cb" Click="LogoutAction" Content="Wyloguj">
-            <Button.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="12"/>
-                    <Setter Property="Margin" Value="10,10,10,10"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-
-
-        <Border Background="#839788" Grid.Column="1" Grid.Row="0" Grid.RowSpan="6">
         <Grid>
-            
             <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
 
-                    <ColumnDefinition Width="450*"/>
-                    <ColumnDefinition Width="50*"/>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
 
+            <Button Background="#eee0cb" Click="BreakfastAction" Grid.Column="0" Grid.Row="0" Content="Śniadanie">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="12"/>
+                        <Setter Property="Margin" Value="10,10,10,10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <Button Background="#eee0cb" Click="LunchAction" Grid.Column="0" Grid.Row="1" Content="Lunch">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="12"/>
+                        <Setter Property="Margin" Value="10,10,10,10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <Button Background="#eee0cb" Click="DrinkAction"  Grid.Column="0" Grid.Row="2" Content="Napoje">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="12"/>
+                        <Setter Property="Margin" Value="10,10,10,10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <Button Background="#eee0cb" Grid.Column="0" Grid.Row="3" Content="Rabaty">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="12"/>
+                        <Setter Property="Margin" Value="10,10,10,10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <Button Background="#eee0cb" Grid.Column="0" Grid.Row="4" Content="Podsumowanie">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="12"/>
+                        <Setter Property="Margin" Value="10,10,10,10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <Button Grid.Row="5"  Grid.Column="0" Background="#eee0cb" Click="LogoutAction" Content="Wyloguj">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="12"/>
+                        <Setter Property="Margin" Value="10,10,10,10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </Grid>
+        
+        <ScrollViewer Grid.Column="1" Grid.Row="0" HorizontalScrollBarVisibility="Auto">
+            <Grid x:Name="FoodPanel" VerticalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="400"/>
+                    <ColumnDefinition Width="70"/>
                 </Grid.ColumnDefinitions>
-
                 <Grid.RowDefinitions>
-
-                    <RowDefinition Height="30*"/>
-                    <RowDefinition Height="30*"/>
-                    <RowDefinition Height="30*"/>
-                    <RowDefinition Height="30*"/>
-                    <RowDefinition Height="30*"/>
-                    <RowDefinition Height="30*"/>
-                    <RowDefinition Height="30*"/>
-                    <RowDefinition Height="30*"/>
-                    <RowDefinition Height="30*"/>
-                    <RowDefinition Height="30*"/>
-                    <RowDefinition Height="30*"/>
-
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
-
-                <Grid x:Name="LunchPanel" Visibility="Hidden" Grid.Column="0" Grid.Row="0" >
-                    <Button Content="Rzerzucha">
-                        <Button.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="12"/>
-                                <Setter Property="Margin" Value="10,10,10,10"/>
-                            </Style>
-                        </Button.Resources>
-                    </Button>
-                </Grid>
-
-                <Grid x:Name="BreakfastPanel" Visibility="Hidden" Grid.Column="3" Grid.Row="3" >
-                    <Button Content="Smoothie" />
-                </Grid>
-
-                <Grid x:Name="DrinkPanel" Visibility="Hidden" Grid.Column="3" Grid.Row="3" >
-                    <Button Content="Smoothie" />
-                </Grid>
-
-                
-                <Border Grid.Column="0" Grid.Row="0" Background="#FFFFFF" BorderThickness="5,5" CornerRadius="10">
-                    <TextBlock Foreground="#43372b" TextAlignment="Left" FontWeight="bold" VerticalAlignment="Center" Padding="10">jajecznica</TextBlock>
-                </Border>
-
-                <Button Grid.Column="1" Grid.Row="0" Content="+" Background="#FFFFFF">
-                    <Button.Resources>
-                        <Style TargetType="{x:Type Border}">
-                            <Setter Property="CornerRadius" Value="10"/>
-                            <Setter Property="Margin" Value="2,4"/>
-                            <Setter Property="BorderThickness" Value="2,5"/>
-                        </Style>
-                    </Button.Resources>
-                </Button>
-
-
             </Grid>
-        </Border>
+        </ScrollViewer>
+
+        <ScrollViewer Grid.Column="1" Grid.Row="0" HorizontalScrollBarVisibility="Auto">
+            <Grid x:Name="SummaryPanel" VerticalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+            </Grid>
+        </ScrollViewer>
+        
     </Grid>
 </Window>

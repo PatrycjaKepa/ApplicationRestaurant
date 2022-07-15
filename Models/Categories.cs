@@ -2,7 +2,7 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
-
+///<summary>Dodajemy klase Categories do której będziemy dodawać produkty </summary>
 namespace ApplicationRestaurant.Models
 {
     public partial class Categories

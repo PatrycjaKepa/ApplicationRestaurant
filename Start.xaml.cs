@@ -18,7 +18,7 @@ using ApplicationRestaurant.Models;
 namespace ApplicationRestaurant
 {
     /// <summary>
-    /// Interaction logic for Window1.xaml
+    /// klasa która pozwala utworzyć nowe zamówienie 
     /// </summary>
     public partial class Start : Window
     {
@@ -75,7 +75,7 @@ namespace ApplicationRestaurant
             }
         }
 
-        private void AddOrderAction(object sender, RoutedEventArgs e)
+        private void AddOrderAction(object sender, RoutedEventArgs e) // metoda dzięki której tworzymy zamówienie
         {
             bool isCreated = ordersRepository.createOrder("TODO");
             if (!isCreated)
@@ -87,7 +87,7 @@ namespace ApplicationRestaurant
             this.bindItems();
         }
 
-        private void DeleteOrderAction(object sender, RoutedEventArgs e)
+        private void DeleteOrderAction(object sender, RoutedEventArgs e) // metoda do usuwania zamówienia
         {
             string name = ((Button)sender).Name;
             name = name.Remove(0, 13);
@@ -96,7 +96,7 @@ namespace ApplicationRestaurant
             this.bindItems();
         }
 
-        private void EditOrderAction(object sender, RoutedEventArgs e)
+        private void EditOrderAction(object sender, RoutedEventArgs e) // metoda do edycji zamówienia
         {
             string name = ((Button)sender).Name;
             name = name.Remove(0, 6);

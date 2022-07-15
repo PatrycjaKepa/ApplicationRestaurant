@@ -2,7 +2,7 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
-
+///<summary>klasa odpowiedzialna za za listy produktów oraz ich ceny oraz kategorie</summary>
 namespace ApplicationRestaurant.Models
 {
     public partial class Products

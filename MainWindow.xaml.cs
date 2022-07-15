@@ -30,12 +30,12 @@ namespace ApplicationRestaurant
             InitializeComponent();
         }
 
-        private void LoginAction(object sender, RoutedEventArgs e)
+        private void LoginAction(object sender, RoutedEventArgs e) // metoda do logowania użytkownika
         {
             TextBox login = (TextBox)this.FindName("login");
             TextBox password = (TextBox)this.FindName("password");
             var user = userRepository.getByName(login.Text);
-            if (user == null)
+            if (user == null)   // instrukcja sprawdzająca poprawność logowania
             {
                 MessageBox.Show("Nie znaleziono użytkownika");
                 return;
@@ -46,12 +46,12 @@ namespace ApplicationRestaurant
                 return;
             }
 
-            Application.Current.MainWindow = new Start(new UserVO(user.Id, user.UserName, user.Role, user.Password));
+            Application.Current.MainWindow = new Start(new UserVO(user.Id, user.UserName, user.Role, user.Password)); // po sprawdzeniu użytkownika przechodzimy do okna tworzenia zamówień 
             Application.Current.MainWindow.Show();
             this.Close();
         }
 
-        private void GoToRegisterAction(object sender, RoutedEventArgs e)
+        private void GoToRegisterAction(object sender, RoutedEventArgs e) // metoda dzięki której po przycisnięciu opcji zarejestruj przechodzimy do okna rejestracji
         {
             Application.Current.MainWindow = new Register();
             Application.Current.MainWindow.Show();

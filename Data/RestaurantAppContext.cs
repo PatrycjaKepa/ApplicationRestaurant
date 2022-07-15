@@ -5,7 +5,8 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using ApplicationRestaurant.Models;
-
+///<summary>łączenie się z bazą danych poprzez dodanie klasyc RestaurantAppContext która dziedziczy po klasie DbContext 
+///<param name=" protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)" > dodajemy tutaj metode dzięki której jesteśmy w stanie połączyć się z bazą danych</summary>
 namespace ApplicationRestaurant.Data
 {
     public partial class RestaurantAppContext : DbContext
@@ -30,8 +31,8 @@ namespace ApplicationRestaurant.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=RestaurantApp;Integrated Security=True");
+#warning protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                optionsBuilder.UseSqlServer("Data Source=DESKTOP-UEJG1T3;Initial Catalog=RestaurantApp;Integrated Security=True"); // tutaj łączymy się z baza podmieniając DESKTOP-UEJG1T3 na nazwe bazy danych jakiej będziemy używać
             }
         }
 

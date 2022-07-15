@@ -32,32 +32,32 @@ namespace ApplicationRestaurant
             InitializeComponent();
         }
 
-        private void LogoutAction(object sender, RoutedEventArgs e)
+        private void LogoutAction(object sender, RoutedEventArgs e) // metoda do wylogowywania się 
         {
             Application.Current.MainWindow = new MainWindow();
             Application.Current.MainWindow.Show();
             this.Close();
         }
 
-        private void BreakfastAction(object sender, RoutedEventArgs e)
+        private void BreakfastAction(object sender, RoutedEventArgs e) // metoda pokazująca opcje z zakładki śniadania
         {
             this.toggleGrid(BreakfastPanel);
             var elements = productsRepository.getProductWithCategoriesByCategoryName("Śniadanie");
         }
 
-        private void LunchAction(object sender, RoutedEventArgs e)
+        private void LunchAction(object sender, RoutedEventArgs e) // metoda pokazująca opcje z zakładki lunch
         {
             this.toggleGrid(LunchPanel);
             var elements = productsRepository.getProductWithCategoriesByCategoryName("Lunch");
         }
 
-        private void DrinkAction(object sender, RoutedEventArgs e)
+        private void DrinkAction(object sender, RoutedEventArgs e) // metoda pokazująca opcje z zakładki napoje
         {
             this.toggleGrid(DrinkPanel);
             var elements = productsRepository.getProductWithCategoriesByCategoryName("Napoje");
         }
 
-        private void toggleGrid(Grid element)
+        private void toggleGrid(Grid element) // metoda odpowiadająca za przechodzeniem między zakładkami aplikacji
         {
             BreakfastPanel.Visibility = Visibility.Hidden;
             LunchPanel.Visibility = Visibility.Hidden;

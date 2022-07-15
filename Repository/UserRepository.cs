@@ -4,7 +4,7 @@ using System.Linq;
 using System.Windows;
 using ApplicationRestaurant.Data;
 using ApplicationRestaurant.Models;
-
+///<summary>Klasa odpowiedzialna za rejestrowanie nowych użytkowników</summary>
 namespace ApplicationRestaurant.Repository
 {
 	public class UserRepository
@@ -16,12 +16,12 @@ namespace ApplicationRestaurant.Repository
 			this.context = new RestaurantAppContext();
 		}
 
-		public List<Users> getAll()
+		public List<Users> getAll() 
         {
 			return this.context.Users.ToList();
         }
 
-		public Users getByName(string name)
+		public Users getByName(string name) // tworzymy użytkownika
         {
 			try
             {
@@ -32,7 +32,7 @@ namespace ApplicationRestaurant.Repository
 			}
         }
 
-		public Boolean createUser(string name, string password)
+		public Boolean createUser(string name, string password)//  dodajemy użytkownika
         {
 			try
             {
@@ -41,7 +41,7 @@ namespace ApplicationRestaurant.Repository
 				user.Password = password;
 				user.Role = "Waiter";
 				var id = this.context.Orders.OrderByDescending(o => o.Id).FirstOrDefault();
-				if (id != null)
+				if (id != null) // dodawanie użytkownika po id jeśli jest to pierwszy użytkownik przypisujemy mu wartość 1 każdemu następnemu wartość o jeden większą
 				{
 					user.Id = id.Id + 1;
 				}
@@ -50,9 +50,9 @@ namespace ApplicationRestaurant.Repository
 					user.Id = 1;
 				}
 				this.context.Users.Add(user);
-				this.context.SaveChanges();
+				this.context.SaveChanges(); // zapisywanie zmian po każdym dodaniu użytkownika ponieważ tego wymaga entity framework
 				return true;
-			} catch (Exception e)
+			} catch (Exception e) 
             {
 				return false;
             }

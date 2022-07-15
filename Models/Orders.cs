@@ -2,7 +2,7 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
-
+///<summary>klasa odpowiedzialna za podsumowanie zamówień </summary>
 namespace ApplicationRestaurant.Models
 {
     public partial class Orders

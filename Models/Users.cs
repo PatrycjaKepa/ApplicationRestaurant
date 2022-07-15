@@ -2,7 +2,7 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
-
+///<summary>klasa odpowiedzialna za przechowywanie Użytkowników tzn ich nazw,roli oraz haseł</summary>
 namespace ApplicationRestaurant.Models
 {
     public partial class Users

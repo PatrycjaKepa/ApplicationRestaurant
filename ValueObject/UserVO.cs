@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+///<summary>klasa która sprawdza poprawność danych użytkownika</summary>
 namespace ApplicationRestaurant.ValueObject
 {
     public class UserVO

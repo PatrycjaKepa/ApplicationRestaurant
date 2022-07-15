@@ -30,12 +30,12 @@ namespace ApplicationRestaurant
             InitializeComponent();
         }
 
-        private void RegisterAction(object sender, RoutedEventArgs e)
+        private void RegisterAction(object sender, RoutedEventArgs e) // rejestrujemy nowego użytkownika
         {
-            TextBox login = (TextBox)this.FindName("login");
-            TextBox password = (TextBox)this.FindName("password");
+            TextBox login = (TextBox)this.FindName("login"); // podajemy login
+            TextBox password = (TextBox)this.FindName("password"); // podajemy hasło
 
-            if(this.checkIfUserExist(login.Text))
+            if(this.checkIfUserExist(login.Text)) // sprawdzamy czy istnieje
             {
                 MessageBox.Show("Użytkownik już istnieje!");
                 return;
@@ -49,7 +49,7 @@ namespace ApplicationRestaurant
             }
             MessageBox.Show("Użytkownik został poprawnie założony");
 
-            this.returnToMainWindow();
+            this.returnToMainWindow(); // wracamy do okna głównego
         }
 
 
@@ -58,12 +58,12 @@ namespace ApplicationRestaurant
             this.returnToMainWindow();
         }
 
-        private Boolean checkIfUserExist(string name)
+        private Boolean checkIfUserExist(string name)  // sprawdzamy czy użytkownik już istnieje 
         {
             return Convert.ToBoolean(userRepository.getByName(name));
         }
 
-        private void returnToMainWindow()
+        private void returnToMainWindow() // wracamy do okna głownego
         {
             Application.Current.MainWindow = new MainWindow();
             Application.Current.MainWindow.Show();

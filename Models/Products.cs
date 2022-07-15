@@ -7,11 +7,17 @@ namespace ApplicationRestaurant.Models
 {
     public partial class Products
     {
+        public Products()
+        {
+            OrderLines = new HashSet<OrderLines>();
+        }
+
         public int Id { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }
         public int CategoryId { get; set; }
 
         public virtual Categories Category { get; set; }
+        public virtual ICollection<OrderLines> OrderLines { get; set; }
     }
 }

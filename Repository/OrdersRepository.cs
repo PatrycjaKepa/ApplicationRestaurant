@@ -19,7 +19,7 @@ namespace ApplicationRestaurant.Repository
 
 		public List<Orders> getAll()
 		{
-			return this.context.Orders.ToList();
+			return this.context.Orders.OrderByDescending(o => o.Id).ToList();
 		}
 
 		public Boolean createOrder(string name)

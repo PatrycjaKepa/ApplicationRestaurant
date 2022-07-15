@@ -53,12 +53,7 @@ namespace ApplicationRestaurant
                 button.SetValue(Grid.RowProperty, row);
                 button.SetValue(Grid.ColumnProperty, 0);
                 button.Click += EditOrderAction;
-
-                Button AddButton = new Button();
-                AddButton.SetValue(Grid.RowProperty, row);
-                AddButton.SetValue(Grid.ColumnProperty, 1);
-                AddButton.Click += AddOrderAction;
-                AddButton.Content = "+";
+                button.Background = Brushes.White;
 
                 Button DeleteButton = new Button();
                 DeleteButton.SetValue(Grid.RowProperty, row);
@@ -66,9 +61,9 @@ namespace ApplicationRestaurant
                 DeleteButton.Content = "-";
                 DeleteButton.Name = "delete_order_" + order.Id;
                 DeleteButton.Click += DeleteOrderAction;
+                DeleteButton.Background = Brushes.White;
 
                 grid.Children.Add(button);
-                grid.Children.Add(AddButton);
                 grid.Children.Add(DeleteButton);
 
                 row++;
@@ -92,6 +87,11 @@ namespace ApplicationRestaurant
             string name = ((Button)sender).Name;
             name = name.Remove(0, 13);
             bool isDeleted = ordersRepository.removeById(Convert.ToInt32(name));
+            if (isDeleted == false)
+            {
+                MessageBox.Show("coś poszło nie tak");
+                return;
+            }
             MessageBox.Show("Zamówienie usunięte");
             this.bindItems();
         }
@@ -101,6 +101,12 @@ namespace ApplicationRestaurant
             string name = ((Button)sender).Name;
             name = name.Remove(0, 6);
             Application.Current.MainWindow = new HomePage(new OrderVO(Convert.ToInt32(name)), this.user);
+            Application.Current.MainWindow.Show();
+            this.Close();
+        }
+        private void LogoutAction(object sender, RoutedEventArgs e) // metoda do wylogowywania się 
+        {
+            Application.Current.MainWindow = new MainWindow();
             Application.Current.MainWindow.Show();
             this.Close();
         }

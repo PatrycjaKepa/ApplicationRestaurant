@@ -31,8 +31,8 @@ namespace ApplicationRestaurant.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-UEJG1T3;Initial Catalog=RestaurantApp;Integrated Security=True"); // tutaj łączymy się z baza podmieniając DESKTOP-UEJG1T3 na nazwe bazy danych jakiej będziemy używać
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=RestaurantApp;Integrated Security=True");
             }
         }
 
@@ -73,16 +73,18 @@ namespace ApplicationRestaurant.Data
 
                 entity.Property(e => e.Name)
                     .IsRequired()
-                    .HasMaxLength(10)
+                    .HasMaxLength(100)
                     .HasColumnName("NAME")
                     .IsFixedLength();
 
                 entity.Property(e => e.OrderId).HasColumnName("ORDER_ID");
 
+                entity.Property(e => e.ProductId).HasColumnName("PRODUCT_ID");
+
                 entity.Property(e => e.Quantity).HasColumnName("QUANTITY");
 
                 entity.Property(e => e.Value)
-                    .HasColumnType("decimal(18, 0)")
+                    .HasColumnType("decimal(5, 2)")
                     .HasColumnName("VALUE");
 
                 entity.HasOne(d => d.Order)
@@ -90,6 +92,12 @@ namespace ApplicationRestaurant.Data
                     .HasForeignKey(d => d.OrderId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__OrderLine__ORDER__31EC6D26");
+
+                entity.HasOne(d => d.Product)
+                    .WithMany(p => p.OrderLines)
+                    .HasForeignKey(d => d.ProductId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__OrderLine__PRODU__5AEE82B9");
             });
 
             modelBuilder.Entity<Orders>(entity =>
@@ -113,21 +121,28 @@ namespace ApplicationRestaurant.Data
                     .HasColumnName("NAME")
                     .IsFixedLength();
 
-                entity.Property(e => e.Price).HasColumnName("PRICE");
+                entity.Property(e => e.Price)
+                    .HasColumnType("decimal(5, 2)")
+                    .HasColumnName("PRICE");
 
                 entity.HasOne(d => d.Category)
                     .WithMany(p => p.Products)
                     .HasForeignKey(d => d.CategoryId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Products__CATEGO__35BCFE0A");
+                    .HasConstraintName("FK__Products__CATEGO__4BAC3F29");
             });
 
             modelBuilder.Entity<Users>(entity =>
             {
                 entity.Property(e => e.Id)
                     .ValueGeneratedNever()
-                    .HasColumnName("ID")
-                    .HasDefaultValueSql("NEXT VALUE FOR Users");
+                    .HasColumnName("ID");
+
+                entity.Property(e => e.Password)
+                    .IsRequired()
+                    .HasMaxLength(100)
+                    .HasColumnName("PASSWORD")
+                    .IsFixedLength();
 
                 entity.Property(e => e.Role)
                     .IsRequired()
@@ -139,12 +154,6 @@ namespace ApplicationRestaurant.Data
                     .IsRequired()
                     .HasMaxLength(30)
                     .HasColumnName("USER_NAME")
-                    .IsFixedLength();
-
-                entity.Property(e => e.Password)
-                    .IsRequired()
-                    .HasMaxLength(100)
-                    .HasColumnName("PASSWORD")
                     .IsFixedLength();
             });
 

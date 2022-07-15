@@ -11,8 +11,8 @@
 
         <Grid.ColumnDefinitions>
 
-            <ColumnDefinition Width="300" />
-            <ColumnDefinition Width="490"/>
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="7*"/>
 
         </Grid.ColumnDefinitions>
 
@@ -26,7 +26,6 @@
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
-                <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -61,7 +60,7 @@
                 </Button.Resources>
             </Button>
 
-            <Button Background="#eee0cb" Grid.Column="0" Grid.Row="3" Content="Rabaty">
+            <Button Background="#eee0cb" Click="SummaryAction" Grid.Column="0" Grid.Row="3" Content="Podsumowanie">
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="12"/>
@@ -70,16 +69,7 @@
                 </Button.Resources>
             </Button>
 
-            <Button Background="#eee0cb" Grid.Column="0" Grid.Row="4" Content="Podsumowanie">
-                <Button.Resources>
-                    <Style TargetType="{x:Type Border}">
-                        <Setter Property="CornerRadius" Value="12"/>
-                        <Setter Property="Margin" Value="10,10,10,10"/>
-                    </Style>
-                </Button.Resources>
-            </Button>
-
-            <Button Grid.Row="5"  Grid.Column="0" Background="#eee0cb" Click="LogoutAction" Content="Wyloguj">
+            <Button Grid.Row="4"  Grid.Column="0" Background="#eee0cb" Click="BackAction" Content="Powrót">
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="12"/>
@@ -92,8 +82,8 @@
         <ScrollViewer Grid.Column="1" Grid.Row="0" HorizontalScrollBarVisibility="Auto">
             <Grid x:Name="FoodPanel" VerticalAlignment="Stretch">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="400"/>
-                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="6*"/>
+                    <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
@@ -101,14 +91,18 @@
             </Grid>
         </ScrollViewer>
 
-        <ScrollViewer Grid.Column="1" Grid.Row="0" HorizontalScrollBarVisibility="Auto">
+        <ScrollViewer x:Name="SummaryPanelWrapper" Grid.Column="1" Grid.Row="0" HorizontalScrollBarVisibility="Auto" Visibility="Hidden">
             <Grid x:Name="SummaryPanel" VerticalAlignment="Stretch">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition/>
+                    <RowDefinition />
                 </Grid.RowDefinitions>
+                
             </Grid>
         </ScrollViewer>
         

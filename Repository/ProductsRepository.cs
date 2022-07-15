@@ -22,6 +22,18 @@ namespace ApplicationRestaurant.Repository
 			return this.context.Products.ToList();
 		}
 
+		public Products getById(int id)
+        {
+			try
+            {
+				return this.context.Products.Where(p => p.Id == id).First();
+			} 
+			catch (Exception e)
+            {
+				return null;
+            }
+        }
+
 		public List<ProductsWithCategoriesVO> getProductWithCategoriesByCategoryName(string name)
 		{
 			try

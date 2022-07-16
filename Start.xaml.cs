@@ -48,17 +48,17 @@ namespace ApplicationRestaurant
                 grid.RowDefinitions.Add(rowDefinition);
                 Button button = new Button();
 
-                button.Content = order.Id;
-                button.Name = "order_" + order.Id;
+                button.Content = order.Id; // przycisk łączy się z baza sprawdzając id zamówienia
+                button.Name = "order_" + order.Id; // dodajemy numer zamówienia
                 button.SetValue(Grid.RowProperty, row);
                 button.SetValue(Grid.ColumnProperty, 0);
-                button.Click += EditOrderAction;
+                button.Click += EditOrderAction; // edycja zamówienia poprzek klikniecie przycisku
                 button.Background = Brushes.White;
 
-                Button DeleteButton = new Button();
+                Button DeleteButton = new Button(); // przycisk do usuwania pozycji 
                 DeleteButton.SetValue(Grid.RowProperty, row);
                 DeleteButton.SetValue(Grid.ColumnProperty, 2);
-                DeleteButton.Content = "-";
+                DeleteButton.Content = "-"; // klikniecie - spowoduje usunięcie pozycji 
                 DeleteButton.Name = "delete_order_" + order.Id;
                 DeleteButton.Click += DeleteOrderAction;
                 DeleteButton.Background = Brushes.White;

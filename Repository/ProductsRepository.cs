@@ -12,7 +12,7 @@ namespace ApplicationRestaurant.Repository
 	{
 		private readonly RestaurantAppContext context;
 
-		public ProductsRepository()
+		public ProductsRepository() // otwiera połączenie z tabelą produkty 
 		{
 			this.context = new RestaurantAppContext();
 		}
@@ -22,7 +22,7 @@ namespace ApplicationRestaurant.Repository
 			return this.context.Products.ToList();
 		}
 
-		public Products getById(int id)
+		public Products getById(int id) // nadaje numer id produktom
         {
 			try
             {
@@ -34,7 +34,7 @@ namespace ApplicationRestaurant.Repository
             }
         }
 
-		public List<ProductsWithCategoriesVO> getProductWithCategoriesByCategoryName(string name)
+		public List<ProductsWithCategoriesVO> getProductWithCategoriesByCategoryName(string name) // dodaje do tabeeli nową pozycje
 		{
 			try
 			{
@@ -51,7 +51,7 @@ namespace ApplicationRestaurant.Repository
 							Price = p.Price
 						}
 					)
-					.Where(s => s.CategoryName == name)
+					.Where(s => s.CategoryName == name) // przypisanie do właściwej kategorii
 					.Select(pwc => new ProductsWithCategoriesVO(pwc.Id, pwc.Name, pwc.CategoryName, pwc.Price)
 					).ToList();
 				return list;

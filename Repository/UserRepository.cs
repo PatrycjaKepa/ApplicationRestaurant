@@ -40,16 +40,17 @@ namespace ApplicationRestaurant.Repository
 				user.UserName = name;
 				user.Password = password;
 				user.Role = "Waiter";
-				var id = this.context.Orders.OrderByDescending(o => o.Id).FirstOrDefault();
-				if (id != null) // dodawanie użytkownika po id jeśli jest to pierwszy użytkownik przypisujemy mu wartość 1 każdemu następnemu wartość o jeden większą
-				{
-					user.Id = id.Id + 1;
-				}
-				else
-				{
-					user.Id = 1;
-				}
-				this.context.Users.Add(user);
+				var id = this.context.Orders.OrderByDescending(o => o.Id).FirstOrDefault(); // nadaje i sortuje id
+
+                if (id != null) // dodawanie użytkownika po id jeśli jest to pierwszy użytkownik przypisujemy mu wartość 1 każdemu następnemu wartość o jeden większą
+                {
+                    user.Id = id.Id + 1;
+                }
+                else if (id == null)
+                {
+                    user.Id = 1;
+                }
+                this.context.Users.Add(user);
 				this.context.SaveChanges(); // zapisywanie zmian po każdym dodaniu użytkownika ponieważ tego wymaga entity framework
 				return true;
 			} catch (Exception e) 

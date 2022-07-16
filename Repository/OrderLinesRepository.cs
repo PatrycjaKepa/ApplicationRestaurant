@@ -13,18 +13,18 @@ namespace ApplicationRestaurant.Repository
 		private readonly RestaurantAppContext context;
 		private ProductsRepository productsRepository;
 
-		public OrderLinesRepository()
+		public OrderLinesRepository() // konstruktor otwierający połączenie z bazą danych oraz utworzenie nowej pozycji w niej
 		{
 			this.context = new RestaurantAppContext();
 			this.productsRepository = new ProductsRepository();
 		}
 
-		public List<OrderLines> getByOrderId(int id)
+		public List<OrderLines> getByOrderId(int id)// dodanie nowego zamówienia do listy
 		{
 			return this.context.OrderLines.Where(ol => ol.OrderId == id).ToList();
 		}
 
-		public Boolean addOrUpdate(int orderId, int productId )
+		public Boolean addOrUpdate(int orderId, int productId ) // dodaje lub aktualizuje zamówienie
         {
 			try
 			{
@@ -39,7 +39,7 @@ namespace ApplicationRestaurant.Repository
 
 				Products product = this.productsRepository.getById(productId);
 				OrderLines orderLine = new OrderLines();
-				var id = this.context.OrderLines.OrderByDescending(o => o.Id).FirstOrDefault();
+				var id = this.context.OrderLines.OrderByDescending(o => o.Id).FirstOrDefault();// sprawdza czy zamówienie już istnieje i przypisuje jej wartość id +1
 				if (id != null)
 				{
 					orderLine.Id = id.Id + 1;
@@ -86,7 +86,7 @@ namespace ApplicationRestaurant.Repository
 			}
 		}*/
 
-		public Boolean removeById(int id)
+		public Boolean removeById(int id) // usuwa Id zamówienia  po wcisnięciu usuń zamówienie
         {
 			try
 			{

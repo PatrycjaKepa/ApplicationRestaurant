@@ -40,7 +40,7 @@ namespace ApplicationRestaurant.Repository
 				user.UserName = name;
 				user.Password = password;
 				user.Role = "Waiter";
-				var id = this.context.Orders.OrderByDescending(o => o.Id).FirstOrDefault();
+				var id = this.context.Users.OrderByDescending(o => o.Id).FirstOrDefault();
 				if (id != null) // dodawanie użytkownika po id jeśli jest to pierwszy użytkownik przypisujemy mu wartość 1 każdemu następnemu wartość o jeden większą
 				{
 					user.Id = id.Id + 1;
@@ -50,7 +50,7 @@ namespace ApplicationRestaurant.Repository
 					user.Id = 1;
 				}
 				this.context.Users.Add(user);
-				this.context.SaveChanges(); // zapisywanie zmian po każdym dodaniu użytkownika ponieważ tego wymaga entity framework
+				this.context.SaveChanges(); // zapisywanie zmian po każdym dodaniu użytkownika ponieważ tego wymaga flash
 				return true;
 			} catch (Exception e) 
             {

@@ -66,27 +66,27 @@ namespace ApplicationRestaurant
             this.showProductsInGrid(elements, FoodPanel);
         }
 
-        private void SummaryAction(object sender, RoutedEventArgs e)
+        private void SummaryAction(object sender, RoutedEventArgs e) // metoda do obsługi podsumowań 
         {
             SummaryPanelWrapper.Visibility = Visibility.Visible;
             FoodPanel.Visibility = Visibility.Hidden;
             this.showSummary();
         }
 
-        private void showSummary()
+        private void showSummary() // metoda pokazująca podsumowania
         {
-            var orderLines = orderLinesRepository.getByOrderId(orderVO.Id);
-            int row = 0;
+            var orderLines = orderLinesRepository.getByOrderId(orderVO.Id);// dodaje/sprawdza zamówienie
+            int row = 0; 
             decimal total = 0;
-            SummaryPanel.Children.Clear();
-            SummaryPanel.RowDefinitions.Clear();
-            foreach (var line in orderLines)
+            SummaryPanel.Children.Clear(); // czyści panel podsumowania
+            SummaryPanel.RowDefinitions.Clear();// czyści poszczególne elementy z szeregu
+            foreach (var line in orderLines) // definiujemy tabele zamówień w aplikacji 
             {
-                RowDefinition rowDefinition = new RowDefinition();
-                rowDefinition.Height = new GridLength(50);
-                SummaryPanel.RowDefinitions.Add(rowDefinition);
+                RowDefinition rowDefinition = new RowDefinition(); // tworzymy nową 
+                rowDefinition.Height = new GridLength(50); // ustawiamy wielkość
+                SummaryPanel.RowDefinitions.Add(rowDefinition); // dodajemy wiersze
 
-                Button button = new Button();
+                Button button = new Button(); // 
 
                 button.Content = line.Name;
                 button.SetValue(Grid.RowProperty, row);
@@ -107,7 +107,7 @@ namespace ApplicationRestaurant
                 buttonQuantity.SetValue(Grid.ColumnProperty, 2);
                 buttonQuantity.Background = Brushes.White;
 
-                Button buttonRemove = new Button();
+                Button buttonRemove = new Button(); // przycisk usuwania pozycji w zamówieniu 
 
                 buttonRemove.Content = "usuń";
                 buttonRemove.SetValue(Grid.RowProperty, row);
@@ -123,19 +123,19 @@ namespace ApplicationRestaurant
                 total += line.Quantity * line.Value;
                 row++;
             }
-            RowDefinition rowDefinitionSummary = new RowDefinition();
+            RowDefinition rowDefinitionSummary = new RowDefinition(); // ustawienie ilości wierszy w podsumowaniu 
             rowDefinitionSummary.Height = new GridLength(50);
             SummaryPanel.RowDefinitions.Add(rowDefinitionSummary);
 
-            Button buttonSummary = new Button();
+            Button buttonSummary = new Button(); // przycisk podsumowania
 
-            buttonSummary.Content = "total:";
+            buttonSummary.Content = "total:"; 
             buttonSummary.SetValue(Grid.RowProperty, row);
             buttonSummary.SetValue(Grid.ColumnSpanProperty, 2);
             buttonSummary.SetValue(Grid.ColumnProperty, 0);
             buttonSummary.Background = Brushes.White;
 
-            Button buttonQuantitySummary = new Button();
+            Button buttonQuantitySummary = new Button(); // podsumowanie całego zamówienia
 
             buttonQuantitySummary.Content = total;
             buttonQuantitySummary.SetValue(Grid.RowProperty, row);
@@ -147,7 +147,7 @@ namespace ApplicationRestaurant
             SummaryPanel.Children.Add(buttonQuantitySummary);
         }
 
-        private void showProductsInGrid(List<ProductsWithCategoriesVO> products, Grid grid)
+        private void showProductsInGrid(List<ProductsWithCategoriesVO> products, Grid grid) // sprawdzanie czy dany 
         {
             int row = 0;
             grid.Children.Clear();
@@ -165,13 +165,13 @@ namespace ApplicationRestaurant
                 button.SetValue(Grid.ColumnProperty, 0);
                 button.Background = Brushes.White;
 
-                Button AddButton = new Button();
+                Button AddButton = new Button(); // dodanie przycisku dodaj
                 AddButton.SetValue(Grid.RowProperty, row);
-                AddButton.SetValue(Grid.ColumnProperty, 1);
+                AddButton.SetValue(Grid.ColumnProperty, 1); // dodaje nowy wiersz
                 AddButton.Background = Brushes.White;
                 AddButton.Content = "Dodaj";
                 AddButton.Click += (object sender, RoutedEventArgs e) => { AddOrderLineAction(sender, e, product.Id); };
-
+                // dodanie zdarzenia dzięki któremu po kliknięciu AddButton dodajemy nowy produkt do listy
                 grid.Children.Add(button);
                 grid.Children.Add(AddButton);
 
@@ -180,9 +180,9 @@ namespace ApplicationRestaurant
             }
 
         }
-        private void AddOrderLineAction(object sender, RoutedEventArgs e, int productId)
+        private void AddOrderLineAction(object sender, RoutedEventArgs e, int productId) // aktualizowanie zamówienia
         {
-            bool isCreated = orderLinesRepository.addOrUpdate(orderVO.Id, productId);
+            bool isCreated = orderLinesRepository.addOrUpdate(orderVO.Id, productId); // sprawdzanie czy można zaktualizować zamówienie
             if (!isCreated)
             {
                 MessageBox.Show("Nie można dodać produktu");
@@ -191,7 +191,7 @@ namespace ApplicationRestaurant
             MessageBox.Show("Zamówienie zaktualizowano");
         }
 
-        private void DeleteOrderLineAction(object sender, RoutedEventArgs e, int orderLineId)
+        private void DeleteOrderLineAction(object sender, RoutedEventArgs e, int orderLineId) // usuwa zamówienie z podsumowania
         {
             bool isDeleted = orderLinesRepository.removeById(orderLineId);
             if (isDeleted == false)

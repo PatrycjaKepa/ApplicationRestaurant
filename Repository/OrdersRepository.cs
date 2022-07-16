@@ -22,7 +22,7 @@ namespace ApplicationRestaurant.Repository
 			return this.context.Orders.OrderByDescending(o => o.Id).ToList();
 		}
 
-		public Boolean createOrder(string name)
+		public Boolean createOrder(string name) // tworzy zamówienie 
 		{
 			try
 			{
@@ -44,7 +44,7 @@ namespace ApplicationRestaurant.Repository
 			}
 		}
 
-		public Boolean removeById(int id)
+		public Boolean removeById(int id) // usuwa zrealizowane zamówienie
         {
 			try
 			{
